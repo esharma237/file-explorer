@@ -1,0 +1,10 @@
+<!-- Toolbar -->
+<div class="toolbar">
+  <span>{{title}}</span>
+</div>
+<div class="container">
+  <button mat-flat-button color="custom" (click)="addOnRoot()">Add folder to root</button>
+  <app-tree-node [node]="rootNode"></app-tree-node>
+</div>
+
+<router-outlet></router-outlet>

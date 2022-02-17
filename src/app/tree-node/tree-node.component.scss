@@ -1,0 +1,146 @@
+ul {
+  list-style-type: none;
+}
+
+.file-image,
+.folder-image {
+  margin-top: 6px;
+  margin-right: 6px;
+}
+
+.file-image {
+  vertical-align: middle;
+  width: 16px;
+}
+
+.folder-image {
+  width: 24px;
+  vertical-align: bottom;
+}
+
+.mat-button {
+  width: 30px;
+  height: 30px;
+  min-width: 24px;
+  padding: 0px;
+  line-height: 10px;
+}
+
+.btn-action-add,
+.btn-action-delete {
+  margin-left: 10px;
+  border-radius: 50%;
+  display: none;
+}
+
+.btn-action-add {
+  background: var(--primary);
+  color: var(--contrast);
+}
+
+.btn-action-delete {
+  background: #f5f5f5;
+  color: var(--primary);
+}
+
+.btn-add,
+.btn-reset {
+  margin-left: 10px;
+  border: 1px solid var(--primary);
+}
+
+.btn-add {
+  background: var(--primary);
+  color: var(--contrast) !important;
+}
+
+.btn-reset {
+  background: #f5f5f5;
+  color: var(--primary) !important;
+}
+
+.node-container {
+  display: inline-table;
+  padding: 6px;
+  border-radius: 5px;
+
+  span {
+    vertical-align: bottom;
+  }
+
+  &:hover {
+    border: solid 1px;
+
+    button {
+      display: inline-block;
+    }
+  }
+}
+
+.option-container {
+  padding: 6px;
+  border-radius: 5px;
+  display: inline-flex;
+
+  &:hover {
+    border: solid 1px;
+  }
+}
+
+.form-container {
+  border: solid 1px;
+  border-radius: 5px;
+  display: inline-flex;
+
+  form {
+    margin: 6px;
+    display: table;
+  }
+
+  input {
+    margin: 2px;
+  }
+
+  #file-icon {
+    vertical-align: text-bottom;
+  }
+}
+
+#input-node:focus {
+  outline: none;
+  border: solid #ffd800;
+}
+
+ul {
+  &.root-node {
+    padding: 0px;
+  }
+  &:not(.root-node) {
+    li {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        content: "";
+        background: transparent;
+        width: 1.25em;
+        left: -1.75em;
+        height: 1.75em;
+        border-left: 1px solid #808080;
+        border-bottom: 1px solid #808080;
+      }
+
+      &:not(:last-child) {
+        &::after {
+          position: absolute;
+          content: "";
+          background: transparent;
+          left: -1.75em;
+          top: 1.75em;
+          height: calc(100% - 1.75em);
+          border-left: 1px solid #808080;
+        }
+      }
+    }
+  }
+}

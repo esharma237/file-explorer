@@ -1,0 +1,47 @@
+<!--Node ui-->
+<div *ngIf="!!node.id" class="node-container">
+  <img *ngIf="node.type === 'folder'" src="../../assets/svg/folder-open-regular.svg" alt="folder-image"
+    class="folder-image" />
+  <img *ngIf="node.type === 'file'" src="../../assets/svg/file-regular.svg" alt="file-image" class="file-image" />
+  <span>{{node.name}}</span>
+  <button *ngIf="node.type === 'folder'" mat-button (click)="showOptions(node.id)" class="btn-action-add">
+    <mat-icon>add</mat-icon>
+  </button>
+  <button mat-stroked-button mat-button class="btn-action-delete" (click)="remove()">
+    <mat-icon>delete_outline</mat-icon>
+  </button>
+</div>
+
+<!--Node children-->
+<ul [class.root-node]="!node.id">
+  <li *ngFor="let child of node.children">
+    <app-tree-node [node]="child" [parent]="node"></app-tree-node>
+  </li>
+</ul>
+
+<!--Add options-->
+<div *ngIf="showAddOptions" class="option-container">
+  <button mat-stroked-button (click)="showNodeForm('folder', node.id)">
+    Add Folder
+  </button>
+  <button mat-stroked-button (click)="showNodeForm('file', node.id)">
+    AddFile
+  </button>
+</div>
+
+<!--Form to add node-->
+<div class="form-container" *ngIf="showForm">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <img *ngIf="form.value.type === 'folder'" src="../../assets/svg/folder-open-regular.svg" alt="folder-image"
+      class="folder-image" />
+    <img *ngIf="form.value.type === 'file'" id="file-icon" src="../../assets/svg/file-regular.svg" alt="file-image"
+      class="file-image" />
+    <input #name type="text" id="input-node" placeholder="name" formControlName="name" required />
+    <button type="submit" mat-button class="btn-add" [disabled]="!form.valid">
+      <mat-icon>done</mat-icon>
+    </button>
+    <button type="button" mat-button class="btn-reset" (click)="reset()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </form>
+</div>
